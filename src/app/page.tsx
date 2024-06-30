@@ -1,14 +1,5 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import Navbar from "../components/Navbar";
-import { Header } from "@/components/Header";
-
-// home page
 export default function Page() {
-  return (
-    <>
-      <Header />
-      <Navbar />
-    </>
-  );
+  redirect("/home");
 }

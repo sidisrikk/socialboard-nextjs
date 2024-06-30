@@ -3,8 +3,7 @@ import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import SessionProviderWrapper from "../components/SessionProviderWrapper";
 import { UserProvider } from "@/context/UserContext";
-
-const inter = Inter({ subsets: ["latin"] });
+import { DrawerNavbar } from "@/components/DrawerNavbar";
 
 export const metadata: Metadata = {
   title: "a Board",
@@ -17,9 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <SessionProviderWrapper>
-          <UserProvider>{children}</UserProvider>
+          <UserProvider>
+            {children}
+            <DrawerNavbar />
+          </UserProvider>
         </SessionProviderWrapper>
       </body>
     </html>

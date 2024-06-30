@@ -8,7 +8,7 @@ export default function SignIn() {
     const username = formData.get("username") as string;
     signIn("credentials", {
       username,
-      callbackUrl: "/",
+      callbackUrl: "/home",
     });
   };
 
@@ -18,11 +18,12 @@ export default function SignIn() {
         <div className="max-w-sm mx-auto md:max-w-md">
           <div className="rounded-lg p-6 mb-4 md:mb-0">
             <Image
+              priority={true}
               src="/logo-removebg.png"
               alt="a Board"
               width={300}
               height={300}
-              className="mx-auto mb-2"
+              className="mx-auto mb-2 h-auto"
             />
             <ABoardName />
           </div>

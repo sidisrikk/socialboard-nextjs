@@ -1,9 +1,9 @@
 import prisma from "@/lib/prisma";
-import { CustomSession } from "@/type/session";
+import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 
-const handler = NextAuth({
+export const nextAuthConfig = {
   providers: [
     Credentials({
       credentials: {
@@ -38,8 +38,10 @@ const handler = NextAuth({
     },
   },
   pages: {
-    error: "/",
-    signIn: "/",
+    error: "/sign-in",
+    signIn: "/sign-in",
   },
-});
+} satisfies NextAuthOptions;
+
+const handler = NextAuth(nextAuthConfig);
 export { handler as GET, handler as POST };
