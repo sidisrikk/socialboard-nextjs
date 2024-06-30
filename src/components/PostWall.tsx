@@ -41,7 +41,11 @@ export function PostWall({
 
   return (
     <div className="space-y-4 mt-4 max-w-2xl mx-auto">
-      <SearchPost setFilterPosts={_setPost} userId={userId} />
+      <SearchPost
+        setFilterPosts={_setPost}
+        userId={userId}
+        noneFilteredPosts={posts}
+      />
       {recentlyPostsComponents}
     </div>
   );

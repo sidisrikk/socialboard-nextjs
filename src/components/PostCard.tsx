@@ -5,6 +5,9 @@ import dayjs from "dayjs";
 import { FaRegComment } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import relativeTime from "dayjs/plugin/relativeTime";
+import Highlighter from "react-highlight-words";
+import { useAtom } from "jotai";
+import searchTextAtom from "@/state/searchText";
 
 dayjs.extend(relativeTime);
 
@@ -24,6 +27,7 @@ export default function PostCard({
   noComments: number;
 }) {
   const router = useRouter();
+  const searchText = useAtom(searchTextAtom)[0];
 
   return (
     <div
@@ -40,7 +44,14 @@ export default function PostCard({
             <span className="text-gray-100">{dayjs(createdAt).fromNow()}</span>
           )}
         </div>
-        <h2 className="text-2xl font-bold mb-2">{title}</h2>
+        <h2 className="text-2xl font-bold mb-2">
+          <Highlighter
+            highlightClassName="bg-golden"
+            searchWords={[searchText]}
+            autoEscape={true}
+            textToHighlight={title}
+          />
+        </h2>
         <p className="text-gray-700 mb-4">{content}</p>
         <div className="flex items-center text-gray-500 text-sm space-x-4 text-gray-100">
           <FaRegComment />
