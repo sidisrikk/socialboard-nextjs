@@ -40,7 +40,7 @@ export default function PostCard({
             <span className="text-gray-100">{dayjs(createdAt).fromNow()}</span>
           )}
         </div>
-        <h2 className="text-xl font-bold mb-2">{title}</h2>
+        <h2 className="text-2xl font-bold mb-2">{title}</h2>
         <p className="text-gray-700 mb-4">{content}</p>
         <div className="flex items-center text-gray-500 text-sm space-x-4 text-gray-100">
           <FaRegComment />

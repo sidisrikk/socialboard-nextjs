@@ -55,7 +55,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
             <div className="flex-grow">
               <div className="flex items-center space-x-2">
-                <span className="font-medium ">{comment.author.username}</span>
+                <span className="font-semibold">{comment.author.username}</span>
                 <span className="text-sm text-gray-100">
                   {dayjs(comment.createdAt).fromNow()}
                 </span>
