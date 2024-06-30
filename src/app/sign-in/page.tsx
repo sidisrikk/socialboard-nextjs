@@ -2,14 +2,17 @@
 import ABoardName from "@/components/ABoardName";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function SignIn() {
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl");
+
   const handleSumbit = (formData: FormData) => {
     const username = formData.get("username") as string;
     signIn("credentials", {
       username,
-      callbackUrl: "/home",
+      callbackUrl: callbackUrl || "/home",
     });
   };
 

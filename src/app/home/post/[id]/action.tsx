@@ -4,7 +4,7 @@ import { nextAuthConfig } from "@/app/api/auth/[...nextauth]/route";
 import prisma from "@/lib/prisma";
 import { CustomSession } from "@/type/session";
 import { getServerSession } from "next-auth";
-import { TCommentWithAuthor } from "./type";
+import { TCommentWithAuthor } from "../../../../type/comment";
 
 export default async function addCommentSVA(
   postId: number,
@@ -12,7 +12,10 @@ export default async function addCommentSVA(
 ) {
   const user = (await getServerSession(nextAuthConfig)) as CustomSession;
   if (!user?.customUser) {
-    throw new Error("User not found");
+    return {
+      status: 500,
+      error: "Session not found. Please log in.",
+    };
   }
 
   try {

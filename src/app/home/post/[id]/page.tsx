@@ -1,9 +1,15 @@
 import PostCard from "@/components/PostCard";
 import prisma from "@/lib/prisma";
-import AddCommentForm from "./AddCommentForm";
-import Comments from "./Comments";
+import AddCommentForm from "../../../../components/AddCommentForm";
+import Comments from "../../../../components/Comments";
+import { get } from "http";
+import { getServerSession } from "next-auth";
+import { nextAuthConfig } from "@/app/api/auth/[...nextauth]/route";
+import { CustomSession } from "@/type/session";
 
 export default async function Page({ params }: { params: { id: string } }) {
+  const user = (await getServerSession(nextAuthConfig)) as CustomSession;
+
   const postId = parseInt(params.id);
   const post = await prisma.post.findUnique({
     where: {
@@ -38,7 +44,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         content={post.content}
         noComments={post.comments.length}
       />
-      <AddCommentForm postId={postId} />
+      {user?.customUser && <AddCommentForm postId={postId} />}
       <Comments commentsData={post.comments} />
     </div>
   );

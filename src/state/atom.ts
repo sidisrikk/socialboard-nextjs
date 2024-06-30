@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import { TCommentWithAuthor } from "./type";
+import { TCommentWithAuthor } from "../type/comment";
 
 const init: TCommentWithAuthor[] = [];
 const commentsAtom = atom(init);

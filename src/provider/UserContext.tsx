@@ -1,4 +1,5 @@
 "use client";
+
 import { createContext, useContext, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { CustomSession } from "@/type/session";

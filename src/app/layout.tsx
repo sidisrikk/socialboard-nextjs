@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "../styles/globals.css";
-import SessionProviderWrapper from "../components/SessionProviderWrapper";
-import { UserProvider } from "@/context/UserContext";
-import { DrawerNavbar } from "@/components/DrawerNavbar";
+import SessionProviderWrapper from "../provider/SessionProviderWrapper";
+import { UserProvider } from "@/provider/UserContext";
 
 export const metadata: Metadata = {
   title: "a Board",

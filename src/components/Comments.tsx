@@ -3,10 +3,9 @@
 import { DummyProfileImage } from "@/components/DummyProfileImage";
 import dayjs from "dayjs";
 import { useAtom } from "jotai";
-import { Comment } from "@prisma/client";
-import commentsAtom from "./atom";
+import commentsAtom from "../state/atom";
 import { useEffect } from "react";
-import { TCommentWithAuthor } from "./type";
+import { TCommentWithAuthor } from "../type/comment";
 
 export default function Comments({
   commentsData,

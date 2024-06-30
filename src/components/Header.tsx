@@ -1,8 +1,7 @@
 import ABoardName from "@/components/ABoardName";
-import Image from "next/image";
 import { LogOutBtn } from "./LogOutBtn";
 import { SignInBtn } from "./SignInBtn";
-import { useUser } from "@/context/UserContext";
+import { useUser } from "@/provider/UserContext";
 import { CustomSession } from "@/type/session";
 import { BsList } from "react-icons/bs";
 import { DummyProfileImage } from "./DummyProfileImage";
