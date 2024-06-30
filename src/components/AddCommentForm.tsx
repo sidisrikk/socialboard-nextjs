@@ -19,7 +19,7 @@ export default function AddCommentForm({ postId }: { postId: number }) {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, submitCount },
+    formState: { errors, isSubmitting },
     reset,
     setError,
   } = useForm<Inputs>({
@@ -53,13 +53,11 @@ export default function AddCommentForm({ postId }: { postId: number }) {
           {...register("commentContent")}
         />
         <button
-          className={`btn md:flex-grow-0 flex-grow md:basis-1${
-            isSubmitting ? "text-gray-300" : "text-success"
-          } rounded-lg`}
+          className={`btn md:flex-grow-0 flex-grow md:basis-1 text-green-300 rounded-lg`}
           type="submit"
           disabled={isSubmitting}
         >
-          Add
+          Add Comment
         </button>
         {errors.root?.serverError && (
           <span className="text-red-500">
