@@ -1,5 +1,5 @@
 import { nextAuthConfig } from "@/app/api/auth/[...nextauth]/route";
-import PostCard from "@/components/PostCard";
+import { PostWall } from "@/components/PostWall";
 import prisma from "@/lib/prisma";
 import { CustomSession } from "@/type/session";
 import { getServerSession } from "next-auth";
@@ -18,27 +18,5 @@ export default async function Page() {
     },
   });
 
-  const myPostsComponents = myPosts.map((post) => {
-    const {
-      title,
-      content,
-      author: { username: authorUsername },
-      _count: { comments: noComments },
-    } = post;
-    return (
-      <div key={post.id}>
-        <PostCard
-          id={post.id}
-          authorUsername={authorUsername}
-          title={title}
-          content={content}
-          noComments={noComments}
-        />
-      </div>
-    );
-  });
-
-  return (
-    <div className="space-y-4 mt-4 max-w-2xl mx-auto">{myPostsComponents}</div>
-  );
+  return <PostWall posts={myPosts} userId={user?.customUser.id} />;
 }
