@@ -18,10 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SessionProviderWrapper>
-          <UserProvider>
-            {children}
-            <DrawerNavbar />
-          </UserProvider>
+          <UserProvider>{children}</UserProvider>
         </SessionProviderWrapper>
       </body>
     </html>

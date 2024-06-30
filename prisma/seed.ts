@@ -5,19 +5,19 @@ const { faker } = require("@faker-js/faker");
 async function main(): Promise<void> {
   // Create users
   const admin = await prisma.user.create({
-    data: { username: "admin" },
+    data: { username: "Admin" },
   });
 
   const john = await prisma.user.create({
-    data: { username: "john" },
+    data: { username: "John" },
   });
 
   const somchai = await prisma.user.create({
-    data: { username: "somchai" },
+    data: { username: "Somchai" },
   });
 
   const udom = await prisma.user.create({
-    data: { username: "udom" },
+    data: { username: "Udom" },
   });
 
   // Get all users

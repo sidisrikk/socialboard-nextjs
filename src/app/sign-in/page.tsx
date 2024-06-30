@@ -2,6 +2,7 @@
 import ABoardName from "@/components/ABoardName";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function SignIn() {
   const handleSumbit = (formData: FormData) => {
@@ -11,6 +12,8 @@ export default function SignIn() {
       callbackUrl: "/home",
     });
   };
+
+  const router = useRouter();
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row-reverse bg-green-500">
@@ -31,7 +34,7 @@ export default function SignIn() {
       </div>
 
       <div className="p-4 md:w-1/2 md:flex md:items-center md:justify-center">
-        <div className="max-w-sm mx-auto md:max-w-md w-full">
+        <div className="max-w-sm mx-auto md:max-w-md w-full space-y-2">
           <h2 className="text-white text-2xl mb-4 md:mb-6">Sign in</h2>
           <form action={handleSumbit}>
             <input
@@ -42,11 +45,17 @@ export default function SignIn() {
             />
             <button
               type="submit"
-              className="btn btn-success w-full text-white p-2 rounded"
+              className="btn btn-success w-full text-white p-2 rounded text-lg"
             >
               Sign In
             </button>
           </form>
+          <button
+            onClick={() => router.push("/home")}
+            className="bg-gray-300 bg-transparent text-gray-300 p-2 text-sm"
+          >
+            Enter as guest
+          </button>
         </div>
       </div>
     </div>
