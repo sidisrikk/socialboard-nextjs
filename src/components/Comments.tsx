@@ -3,7 +3,7 @@
 import { DummyProfileImage } from "@/components/DummyProfileImage";
 import dayjs from "dayjs";
 import { useAtom } from "jotai";
-import commentsAtom from "../state/atom";
+import commentsAtom from "../state/comment";
 import { useEffect } from "react";
 import { TCommentWithAuthor } from "../type/comment";
 

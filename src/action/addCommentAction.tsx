@@ -4,9 +4,9 @@ import { nextAuthConfig } from "@/app/api/auth/[...nextauth]/route";
 import prisma from "@/lib/prisma";
 import { CustomSession } from "@/type/session";
 import { getServerSession } from "next-auth";
-import { TCommentWithAuthor } from "../../../../type/comment";
+import { TCommentWithAuthor } from "../type/comment";
 
-export default async function addCommentSVA(
+export default async function addCommentAction(
   postId: number,
   commentContent: string
 ) {

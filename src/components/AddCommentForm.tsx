@@ -1,11 +1,11 @@
 "use client";
 
 import { SubmitHandler, useForm } from "react-hook-form";
-import addCommentSVA from "../app/home/post/[id]/action";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAtom } from "jotai";
-import commentsAtom from "../state/atom";
+import commentsAtom from "../state/comment";
+import addCommentAction from "@/action/addCommentAction";
 
 type Inputs = {
   commentContent: string;
@@ -27,7 +27,7 @@ export default function AddCommentForm({ postId }: { postId: number }) {
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (formData) => {
-    const { status, data, error } = await addCommentSVA(
+    const { status, data, error } = await addCommentAction(
       postId,
       formData.commentContent
     );
