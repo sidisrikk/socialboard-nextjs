@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { NextAuthOptions } from "next-auth";
+import { NextAuthOptions, User } from "next-auth";
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 
@@ -18,7 +18,11 @@ export const nextAuthConfig = {
         if (!user) {
           throw new Error("User not found.");
         }
-        return user;
+        // WARNING: User from prisma != User from next-auth
+        return {
+          id: user.id,
+          username: user.username,
+        };
       },
     }),
   ],
