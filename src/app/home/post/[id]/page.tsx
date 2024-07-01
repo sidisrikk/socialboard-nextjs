@@ -43,6 +43,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         title={post.title}
         content={post.content}
         noComments={post.comments.length}
+        canEdit={false}
       />
       {user?.customUser && <AddCommentForm postId={postId} />}
       <Comments commentsData={post.comments} />
