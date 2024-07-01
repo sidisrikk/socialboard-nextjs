@@ -2,12 +2,12 @@
 
 ## Prerequisite
 
-1. set env
-2. db with seed
+1. Set environment variables.
+2. Set up PostgreSQL database with seed data.
 
-## What i've done?
+## What features i've done?
 
-1.
-2.
-3.
-4.
+1. The user can sign in using their username.
+2. The UI displays differently for guests and authenticated users.
+3. Users can add comments and edit their posts.
+4. The navbar and header are responsive across different devices.
