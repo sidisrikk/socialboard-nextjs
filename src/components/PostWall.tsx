@@ -2,8 +2,10 @@
 
 import PostCard from "@/components/PostCard";
 import SearchPost from "@/components/SearchPost";
+import postsAtom from "@/state/post";
 import { TPostWithAuthorWithCommentCount } from "@/type/post";
-import { useEffect, useState } from "react";
+import { useAtom } from "jotai";
+import { useEffect } from "react";
 
 export function PostWall({
   posts,
@@ -13,7 +15,8 @@ export function PostWall({
   userId?: number;
 }) {
   const init: TPostWithAuthorWithCommentCount[] = [];
-  const [_posts, _setPost] = useState(init);
+
+  const [_posts, _setPost] = useAtom(postsAtom);
 
   useEffect(() => {
     _setPost(posts);

@@ -2,7 +2,6 @@ import PostCard from "@/components/PostCard";
 import prisma from "@/lib/prisma";
 import AddCommentForm from "../../../../components/AddCommentForm";
 import Comments from "../../../../components/Comments";
-import { get } from "http";
 import { getServerSession } from "next-auth";
 import { nextAuthConfig } from "@/app/api/auth/[...nextauth]/route";
 import { CustomSession } from "@/type/session";
@@ -38,6 +37,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <div className="space-y-4 mt-4 max-w-2xl mx-auto">
       <PostCard
+        id={post.id}
         authorUsername={post.author.username}
         createdAt={post?.createdAt}
         title={post.title}
