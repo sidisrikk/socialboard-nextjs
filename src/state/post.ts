@@ -1,7 +1,7 @@
-import { Post } from "@prisma/client";
+import { TPostWithAuthorWithCommentCount } from "@/type/post";
 import { atom } from "jotai";
 
-const init: Post[] = [];
+const init: TPostWithAuthorWithCommentCount[] = [];
 const postsAtom = atom(init);
 
 export default postsAtom;

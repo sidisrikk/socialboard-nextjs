@@ -1,5 +1,6 @@
 import editPostAction from "@/action/editPostAction";
 import postsAtom from "@/state/post";
+import { TPostWithAuthorWithCommentCount } from "@/type/post";
 import { Post } from "@prisma/client";
 import { useAtom } from "jotai";
 import React from "react";
@@ -38,7 +39,7 @@ const EditPostModal = ({
       formData.content
     );
     if (status === 200) {
-      const updatedPosts = posts.map((post: Post) =>
+      const updatedPosts = posts.map((post: TPostWithAuthorWithCommentCount) =>
         post.id === postId ? { ...post, ...formData } : post
       );
       setPosts(updatedPosts);

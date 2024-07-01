@@ -1,4 +1,4 @@
-import { nextAuthConfig } from "@/app/api/auth/[...nextauth]/route";
+import { nextAuthConfig } from "@/auth";
 import { PostWall } from "@/components/PostWall";
 import prisma from "@/lib/prisma";
 import { CustomSession } from "@/type/session";

@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma";
 import AddCommentForm from "../../../../components/AddCommentForm";
 import Comments from "../../../../components/Comments";
 import { getServerSession } from "next-auth";
-import { nextAuthConfig } from "@/app/api/auth/[...nextauth]/route";
+import { nextAuthConfig } from "@/auth";
 import { CustomSession } from "@/type/session";
 
 export default async function Page({ params }: { params: { id: string } }) {
