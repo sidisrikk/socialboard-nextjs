@@ -21,6 +21,7 @@ export default function PostCard({
   title,
   content,
   noComments,
+  canEdit = false,
 }: {
   id: number;
   authorUsername: string;
@@ -28,6 +29,7 @@ export default function PostCard({
   title: string;
   content: string;
   noComments: number;
+  canEdit?: boolean;
 }) {
   const router = useRouter();
   const searchText = useAtomValue(searchTextAtom);
@@ -43,19 +45,23 @@ export default function PostCard({
   return (
     <div className={`bg-white ${id && "shadow-md"} rounded-lg`}>
       <div className="p-4 relative">
-        <button
-          onClick={handleEditClick}
-          className="absolute top-4 right-4 text-green-300 p-2 hover:bg-green-100 rounded-full transition duration-200 ease-in-out transform hover:scale-110 shadow-lg"
-        >
-          <FiEdit3 />
-        </button>
-        <EditPostModal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          title={title}
-          content={content}
-          postId={id}
-        />
+        {canEdit && (
+          <>
+            <button
+              onClick={handleEditClick}
+              className="absolute top-4 right-4 text-green-300 p-2 hover:bg-green-100 rounded-full transition duration-200 ease-in-out transform hover:scale-110 shadow-lg"
+            >
+              <FiEdit3 />
+            </button>
+            <EditPostModal
+              isOpen={isModalOpen}
+              onClose={handleCloseModal}
+              title={title}
+              content={content}
+              postId={id}
+            />
+          </>
+        )}
         <div className="flex items-center space-x-4 ml-1 mb-4">
           <DummyProfileImage size={48} className="rounded-full" />
           <h3 className="font-semibold text-lg ">{authorUsername}</h3>

@@ -1,3 +1,4 @@
+// ### redirect when access protected path
 // import { withAuth } from "next-auth/middleware";
 
 // export default withAuth({
@@ -9,7 +10,7 @@
 // });
 
 // export const config = {
-//   matcher: ["/post"],
+//   matcher: ["/home/post"],
 // };
 
 export default function middleware() {}

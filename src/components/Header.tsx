@@ -1,13 +1,12 @@
 import ABoardName from "@/components/ABoardName";
 import { LogOutBtn } from "./LogOutBtn";
 import { SignInBtn } from "./SignInBtn";
-import { useUser } from "@/provider/UserContext";
-import { CustomSession } from "@/type/session";
 import { BsList } from "react-icons/bs";
 import { DummyProfileImage } from "./DummyProfileImage";
+import useCustomSession from "@/hook/useCustomSession";
 
 export function Header() {
-  const user: CustomSession = useUser();
+  const { session, status } = useCustomSession();
 
   return (
     <>
@@ -15,10 +14,10 @@ export function Header() {
         <div className="flex-1 pl-4">
           <ABoardName />
         </div>
-        {user ? (
+        {status == "authenticated" ? (
           <>
             <span className="pr-8 text-white md:block hidden">
-              {user?.customUser.username}
+              {session?.customUser.username}
             </span>
             <div className="flex-none gap-2 md:block hidden">
               <div className="dropdown dropdown-end">

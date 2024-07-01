@@ -10,12 +10,12 @@ import { useEffect } from "react";
 export function PostWall({
   posts,
   userId,
+  canEdit,
 }: {
   posts: TPostWithAuthorWithCommentCount[];
   userId?: number;
+  canEdit?: boolean;
 }) {
-  const init: TPostWithAuthorWithCommentCount[] = [];
-
   const [_posts, _setPost] = useAtom(postsAtom);
 
   useEffect(() => {
@@ -37,6 +37,7 @@ export function PostWall({
           title={title}
           content={content}
           noComments={noComments}
+          canEdit={canEdit}
         />
       </div>
     );
