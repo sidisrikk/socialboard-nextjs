@@ -11,3 +11,4 @@
 2. The UI displays differently for guests and authenticated users.
 3. Users can add comments and edit their posts.
 4. The navbar and header are responsive across different devices.
+5. The sign-in page is responsive across different devices.
