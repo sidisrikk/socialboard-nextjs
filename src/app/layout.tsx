@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
 import SessionProviderWrapper from "../provider/SessionProviderWrapper";
-import JotaiProvider from "@/provider/JotaiProvider";
+import { Provider as JotaiProvider } from "jotai";
 
 export const metadata: Metadata = {
   title: "a Board",
