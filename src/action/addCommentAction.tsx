@@ -1,16 +1,14 @@
 "use server";
 
-import { nextAuthConfig } from "@/auth";
+import { getServerCustomSession } from "@/auth";
 import prisma from "@/lib/prisma";
-import { CustomSession } from "@/type/session";
-import { getServerSession } from "next-auth";
 import { TCommentWithAuthor } from "../type/comment";
 
 export default async function addCommentAction(
   postId: number,
   commentContent: string
 ) {
-  const user = (await getServerSession(nextAuthConfig)) as CustomSession;
+  const user = await getServerCustomSession();
   if (!user?.customUser) {
     return {
       status: 500,

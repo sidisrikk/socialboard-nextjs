@@ -2,12 +2,10 @@ import PostCard from "@/components/PostCard";
 import prisma from "@/lib/prisma";
 import AddCommentForm from "../../../../components/AddCommentForm";
 import Comments from "../../../../components/Comments";
-import { getServerSession } from "next-auth";
-import { nextAuthConfig } from "@/auth";
-import { CustomSession } from "@/type/session";
+import { getServerCustomSession } from "@/auth";
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const user = (await getServerSession(nextAuthConfig)) as CustomSession;
+  const user = await getServerCustomSession();
 
   const postId = parseInt(params.id);
   const post = await prisma.post.findUnique({

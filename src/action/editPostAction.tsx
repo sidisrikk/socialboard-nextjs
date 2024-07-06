@@ -1,9 +1,7 @@
 "use server";
 
-import { nextAuthConfig } from "@/auth";
+import { getServerCustomSession } from "@/auth";
 import prisma from "@/lib/prisma";
-import { CustomSession } from "@/type/session";
-import { getServerSession } from "next-auth";
 
 export default async function editPostAction(
   postId: number,
@@ -11,7 +9,7 @@ export default async function editPostAction(
   content: string
 ) {
   // auth
-  const user = (await getServerSession(nextAuthConfig)) as CustomSession;
+  const user = await getServerCustomSession();
   if (!user?.customUser) {
     return {
       status: 500,

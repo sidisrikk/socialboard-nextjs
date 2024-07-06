@@ -1,6 +1,13 @@
 import prisma from "@/lib/prisma";
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import type {
+  GetServerSidePropsContext,
+  NextApiRequest,
+  NextApiResponse,
+} from "next";
+import { getServerSession } from "next-auth";
+import { CustomSession } from "./type/session";
 
 export const nextAuthConfig = {
   providers: [
@@ -47,3 +54,12 @@ export const nextAuthConfig = {
     signIn: "/sign-in",
   },
 } satisfies NextAuthOptions;
+
+export async function getServerCustomSession(
+  ...args:
+    | [GetServerSidePropsContext["req"], GetServerSidePropsContext["res"]]
+    | [NextApiRequest, NextApiResponse]
+    | []
+) {
+  return (await getServerSession(...args, nextAuthConfig)) as CustomSession;
+}
