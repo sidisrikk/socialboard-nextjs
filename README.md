@@ -3,7 +3,11 @@
 ## Prerequisite
 
 1. Set environment variables.
+   1. set `NEXTAUTH_SECRET` with `openssl rand -base64 32`
+   2. set `NEXTAUTH_URL` like `http://localhost:3000/api/auth`
 2. Set up PostgreSQL database with seed data.
+   1. manually create db
+   2. `npm run reset`
 
 ## What features i've done?
 
