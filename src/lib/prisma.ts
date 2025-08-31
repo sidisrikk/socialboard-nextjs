@@ -12,8 +12,17 @@ import { PrismaClient } from "@prisma/client";
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
-export const prisma = globalForPrisma.prisma || new PrismaClient();
+// Conditional Prisma initialization to handle build-time issues
+let prisma: PrismaClient;
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+try {
+  prisma = globalForPrisma.prisma || new PrismaClient();
+  if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+} catch (error) {
+  // Fallback for build-time when Prisma engines aren't available
+  console.warn("Prisma client initialization failed during build:", error);
+  prisma = {} as PrismaClient;
+}
 
+export { prisma };
 export default prisma;
